@@ -1,0 +1,51 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    monthlySalary: Int!
+    monthlyExpense: Int!
+}
+
+input CreateUserInput {
+    name: String!
+    email: String!
+    monthlySalary: Int!
+    monthlyExpense: Int!
+}
+
+input UpdateUserInput {
+    id: ID!
+    name: String!
+    email: String!
+    monthlySalary: Int!
+    monthlyExpense: Int!
+}
+
+enum AccountType {
+    CREDIT
+    DEBIT
+}
+
+type Account {
+    accountId: ID!
+    accountType: AccountType!
+    userId: ID!
+}
+type Query {
+    getAllUser: [User]
+    getUserById(id: ID!): User
+    getAllAccount: [Account]
+    getAccountById(id: ID!): Account
+}
+
+type Mutation {
+    createUser(input: CreateUserInput!): User
+    deleteUser(id: ID!): Boolean
+    updateUser(input: UpdateUserInput!): User
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
