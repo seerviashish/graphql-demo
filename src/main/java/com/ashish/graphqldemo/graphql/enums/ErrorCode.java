@@ -18,7 +18,7 @@ public enum ErrorCode {
 
     AccountNotFound_005(5, "Account not found by id", ErrorType.DataFetchingException),
 
-    UserUpdateFailed_006(6, "User creation failed due to monthly salary - monthly expense < 1000", ErrorType.OperationNotSupported),
+    UserUpdateFailed_006(6, "User updation failed due to monthly salary - monthly expense < 1000", ErrorType.OperationNotSupported),
 
     UserAndAccountDeletionFailed_007(7, "Account and User delete query failed", ErrorType.ExecutionAborted),
 
