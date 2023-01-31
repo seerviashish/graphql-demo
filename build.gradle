@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'jacoco'
 }
 
 group = 'com.ashish'
@@ -32,7 +33,35 @@ dependencies {
 	testImplementation 'org.springframework.graphql:spring-graphql-test'
 }
 
+
+
+
 tasks.named('test') {
 	useJUnitPlatform()
+	maxHeapSize = '1G'
+	finalizedBy jacocoTestReport
+	jacocoTestReport {
+		dependsOn test
+		reports {
+			xml.enabled true
+			csv.enabled true
+			html.enabled true
+		}
+	}
+//	reports {
+//		junitXml {
+//			outputPerTestCase = true // defaults to false
+//			mergeReruns = true // defaults to false
+//		}
+//	}
+
+
+//	filter {
+//		includeTestsMatching("*Test*")
+//	}
+
+//	testLogging {
+//		events "passed"
+//	}
 }
 

@@ -9,6 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class CreateUserInput {
     private String name;
 

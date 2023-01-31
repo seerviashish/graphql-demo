@@ -9,6 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class UpdateUserInput {
     private Long id;
     private String name;
