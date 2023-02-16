@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Account {
+public class Account implements PageData {
     private Long accountId;
 
     private Long userId;

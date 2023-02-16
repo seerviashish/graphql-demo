@@ -1,23 +1,15 @@
 package com.ashish.graphqldemo.graphql.schema;
 
 import com.ashish.graphqldemo.GraphqlDemoApplicationTests;
-import com.ashish.graphqldemo.graphql.input.CreateUserInput;
 import com.ashish.graphqldemo.graphql.input.UpdateUserInput;
 import com.ashish.graphqldemo.graphql.type.User;
-import com.ashish.graphqldemo.repository.AccountRepository;
 import com.ashish.graphqldemo.repository.UserRepository;
 import com.ashish.graphqldemo.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
@@ -99,7 +91,7 @@ class UserResolverTest extends GraphqlDemoApplicationTests {
     @Test
     void updateUser_UserUpdationFailed() {
         User mockUser = mockUsers.get(0);
-        UpdateUserInput mockUpdateUserInput = new UpdateUserInput(mockUser.getId(), mockUser.getName(), mockUser.getEmail(), mockUser.getMonthlySalary(), 20000);
+        UpdateUserInput mockUpdateUserInput = new UpdateUserInput(mockUser.getId(), mockUser.getName(), mockUser.getEmail(), mockUser.getMonthlySalary(), 20000F);
         graphqlTester.document(
                         // language=GraphQL
                         """

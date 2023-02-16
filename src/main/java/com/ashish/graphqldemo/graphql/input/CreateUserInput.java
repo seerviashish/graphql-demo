@@ -15,7 +15,7 @@ public class CreateUserInput {
 
     private String email;
 
-    private Integer monthlySalary;
+    private Float monthlySalary;
 
-    private Integer monthlyExpense;
+    private Float monthlyExpense;
 }

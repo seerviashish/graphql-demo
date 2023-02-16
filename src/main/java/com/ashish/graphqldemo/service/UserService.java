@@ -5,12 +5,14 @@ import com.ashish.graphqldemo.graphql.enums.ErrorCode;
 import com.ashish.graphqldemo.graphql.error.*;
 import com.ashish.graphqldemo.graphql.input.CreateUserInput;
 import com.ashish.graphqldemo.graphql.input.UpdateUserInput;
+import com.ashish.graphqldemo.graphql.type.PagedResult;
 import com.ashish.graphqldemo.graphql.type.User;
 import com.ashish.graphqldemo.model.Account;
 import com.ashish.graphqldemo.repository.AccountRepository;
 import com.ashish.graphqldemo.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,6 +38,23 @@ public class UserService {
             userResponse.setMonthlyExpense(user.getMonthlyExpense());
             return userResponse;
         }).collect(Collectors.toList());
+    }
+    public PagedResult<User> getAllUserPaged(Pageable pageable) {
+        PagedResult<User> pagedResult = new PagedResult<>();
+        long total = userRepository.count();
+
+        List<User> users =  userRepository.findAll(pageable).stream().map(user -> {
+            User userResponse = new User();
+            userResponse.setId(user.getId());
+            userResponse.setName(user.getName());
+            userResponse.setEmail(user.getEmail());
+            userResponse.setMonthlySalary(user.getMonthlySalary());
+            userResponse.setMonthlyExpense(user.getMonthlyExpense());
+            return userResponse;
+        }).collect(Collectors.toList());
+        pagedResult.setItems(users);
+        pagedResult.setTotal(total);
+        return pagedResult;
     }
 
 

@@ -26,11 +26,11 @@ import java.util.List;
 public class GraphqlDemoApplicationTests {
 
     protected static final List<User> mockUsers = Arrays.asList(
-            new User(1L, "Test One", "t1@g.com", 2000, 100),
-            new User(2L, "Test Two", "t2@g.com", 3000, 200),
-            new User(3L, "Test Three", "t3@g.com", 4000, 300),
-            new User(4L, "Test Four", "t4@g.com", 5000, 400),
-            new User(5L, "Test Five", "t5@g.com", 6000, 500));
+            new User(1L, "Test One", "t1@g.com", 2000F, 100F),
+            new User(2L, "Test Two", "t2@g.com", 3000F, 200F),
+            new User(3L, "Test Three", "t3@g.com", 4000F, 300F),
+            new User(4L, "Test Four", "t4@g.com", 5000F, 400F),
+            new User(5L, "Test Five", "t5@g.com", 6000F, 500F));
 
     protected static final List<Account> mockAccounts = Arrays.asList(
             new Account(1L, 1L, AccountType.DEBIT),
@@ -41,11 +41,11 @@ public class GraphqlDemoApplicationTests {
     );
 
     protected static final List<com.ashish.graphqldemo.model.User> mockUserModels = Arrays.asList(
-            new com.ashish.graphqldemo.model.User(1L, "Test One", "t1@g.com", 2000, 100),
-            new com.ashish.graphqldemo.model.User(2L, "Test Two", "t2@g.com", 3000, 200),
-            new com.ashish.graphqldemo.model.User(3L, "Test Three", "t3@g.com", 4000, 300),
-            new com.ashish.graphqldemo.model.User(4L, "Test Four", "t4@g.com", 5000, 400),
-            new com.ashish.graphqldemo.model.User(5L, "Test Five", "t5@g.com", 6000, 500));
+            new com.ashish.graphqldemo.model.User(1L, "Test One", "t1@g.com", 2000F, 100F),
+            new com.ashish.graphqldemo.model.User(2L, "Test Two", "t2@g.com", 3000F, 200F),
+            new com.ashish.graphqldemo.model.User(3L, "Test Three", "t3@g.com", 4000F, 300F),
+            new com.ashish.graphqldemo.model.User(4L, "Test Four", "t4@g.com", 5000F, 400F),
+            new com.ashish.graphqldemo.model.User(5L, "Test Five", "t5@g.com", 6000F, 500F));
 
     protected static final List<com.ashish.graphqldemo.model.Account> mockAccountModels = Arrays.asList(
             new com.ashish.graphqldemo.model.Account(1L, AccountType.DEBIT, mockUserModels.get(0)),
@@ -55,7 +55,7 @@ public class GraphqlDemoApplicationTests {
             new com.ashish.graphqldemo.model.Account(5L, AccountType.DEBIT, mockUserModels.get(4))
     );
 
-    protected static final List<CreateUserInput> mockCreateUserInputs = Arrays.asList(new CreateUserInput("Test One", "t1@g.com", 2000, 100), new CreateUserInput("Test Two", "t2@g.com", 300, 200));
+    protected static final List<CreateUserInput> mockCreateUserInputs = Arrays.asList(new CreateUserInput("Test One", "t1@g.com", 2000F, 100F), new CreateUserInput("Test Two", "t2@g.com", 300F, 200F));
 
 
     protected WebGraphQlTester graphqlTester;

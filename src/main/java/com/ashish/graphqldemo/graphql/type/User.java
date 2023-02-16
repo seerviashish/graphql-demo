@@ -8,10 +8,10 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class User {
+public class User implements PageData{
     private Long id;
     private String name;
     private String email;
-    private Integer monthlySalary;
-    private Integer monthlyExpense;
+    private Float monthlySalary;
+    private Float monthlyExpense;
 }

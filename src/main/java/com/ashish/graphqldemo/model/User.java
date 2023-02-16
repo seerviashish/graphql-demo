@@ -24,7 +24,7 @@ public class User {
     private String email;
 
     @Column(name = "monthly_salary", nullable = false)
-    private Integer monthlySalary;
+    private Float monthlySalary;
     @Column(name = "monthly_expense", nullable = false)
-    private Integer monthlyExpense;
+    private Float monthlyExpense;
 }

@@ -1,8 +1,10 @@
 package com.ashish.graphqldemo.graphql.schema;
 
 import com.ashish.graphqldemo.graphql.type.Account;
+import com.ashish.graphqldemo.graphql.type.PagedResult;
 import com.ashish.graphqldemo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
@@ -24,4 +26,11 @@ public class AccountResolver {
     public List<Account> getAllAccount() {
         return accountService.getAllAccount();
     }
+
+    @QueryMapping
+    public PagedResult<Account> getAllAccountPaged(@Argument Integer page, @Argument Integer size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return accountService.getAllAccountPaged(pageRequest);
+    }
+
 }

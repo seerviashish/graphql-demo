@@ -2,9 +2,11 @@ package com.ashish.graphqldemo.graphql.schema;
 
 import com.ashish.graphqldemo.graphql.input.CreateUserInput;
 import com.ashish.graphqldemo.graphql.input.UpdateUserInput;
+import com.ashish.graphqldemo.graphql.type.PagedResult;
 import com.ashish.graphqldemo.graphql.type.User;
 import com.ashish.graphqldemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -21,6 +23,13 @@ public class UserResolver {
     @QueryMapping
     public List<User> getAllUser() {
         return userService.getAllUser();
+    }
+
+
+    @QueryMapping
+    public PagedResult<User> getAllUserPaged(@Argument Integer page, @Argument Integer size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return userService.getAllUserPaged(pageRequest);
     }
 
     @QueryMapping

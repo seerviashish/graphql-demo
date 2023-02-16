@@ -48,7 +48,7 @@ class UserServiceTest extends GraphqlDemoApplicationTests {
     @Test
     void createUser() {
 
-        assertEquals(userService.createUser(mockCreateUserInputs.get(0)), new User(null, "Test One", "t1@g.com", 2000, 100));
+        assertEquals(userService.createUser(mockCreateUserInputs.get(0)), new User(null, "Test One", "t1@g.com", 2000F, 100F));
     }
 
     @Test

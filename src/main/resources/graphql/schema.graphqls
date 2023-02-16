@@ -17,8 +17,8 @@ input UpdateUserInput {
     id: ID!
     name: String!
     email: String!
-    monthlySalary: Int!
-    monthlyExpense: Int!
+    monthlySalary: Float!
+    monthlyExpense: Float!
 }
 
 enum AccountType {
@@ -31,10 +31,20 @@ type Account {
     accountType: AccountType!
     userId: ID!
 }
+
+union PageData = User | Account
+
+type PagedResult {
+    items: [PageData]
+    total: Int!
+}
+
 type Query {
     getAllUser: [User]
+    getAllUserPaged(page: Int!, size: Int!): PagedResult
     getUserById(id: ID!): User
     getAllAccount: [Account]
+    getAllAccountPaged(page: Int!, size: Int!): PagedResult
     getAccountById(id: ID!): Account
 }
 
@@ -45,7 +55,7 @@ type Mutation {
 }
 
 schema {
-  query: Query
-  mutation: Mutation
+    query: Query
+    mutation: Mutation
 }
 
