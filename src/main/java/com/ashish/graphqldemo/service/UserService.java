@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,11 +38,12 @@ public class UserService {
             return userResponse;
         }).collect(Collectors.toList());
     }
+
     public PagedResult<User> getAllUserPaged(Pageable pageable) {
         PagedResult<User> pagedResult = new PagedResult<>();
         long total = userRepository.count();
 
-        List<User> users =  userRepository.findAll(pageable).stream().map(user -> {
+        List<User> users = userRepository.findAll(pageable).stream().map(user -> {
             User userResponse = new User();
             userResponse.setId(user.getId());
             userResponse.setName(user.getName());
